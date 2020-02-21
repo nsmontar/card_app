@@ -4,21 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ch10CardLib
+namespace Ch11CardLib
 {
     public class Deck
     {
-        private Card[] cards;
+        private Cards cards = new Cards();
         public Deck()
         {
-            cards = new Card[52];
             for (int suitVal = 0; suitVal < 4; suitVal++)
             {
                 for (int rankVal = 1; rankVal < 14; rankVal++)
                 {
-                    cards[suitVal*13+rankVal-1] = 
-                        new Card((Rank)rankVal, (Suit)suitVal);
-
+                    cards.Add(new Card((Rank)rankVal, (Suit)suitVal));
                 }
             }
         }
@@ -37,23 +34,23 @@ namespace Ch10CardLib
         }
         public void Shuffle()
         {
-            Card[] newDeck = new Card[52];
+            Cards newDeck = new Cards();
             bool[] assigned = new bool[52];
             Random sourceGen = new Random();
-            int destCard = 0;
+            int sourceCard = 0;
             for (int i = 0; i < 52; i++)
             {
                 bool foundCard = false;
                 while (!foundCard)
                 {
-                    destCard = sourceGen.Next(52);
-                    if (assigned[destCard] == false)
+                    sourceCard = sourceGen.Next(52);
+                    if (assigned[sourceCard] == false)
                         foundCard = true;
                 }
-                assigned[destCard] = true;
-                newDeck[destCard] = cards[i];
+                assigned[sourceCard] = true;
+                newDeck.Add(cards[sourceCard]);
             }
-            newDeck.CopyTo(cards, 0);
+            newDeck.CopyTo(cards);
         }
     }
 }
