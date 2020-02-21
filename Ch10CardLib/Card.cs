@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ch11CardLib
+namespace Ch10CardLib
 {
-    public class Card
+    public class Card: ICloneable
     {
         public readonly Suit suit;
         public readonly Rank rank;
@@ -17,5 +17,6 @@ namespace Ch11CardLib
         }
         public override string ToString()
             => $"The {rank} of {suit}s";
+        public object Clone() => MemberwiseClone();
     }
 }

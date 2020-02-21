@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ch11CardLib
+namespace Ch10CardLib
 {
     public enum Rank
     {

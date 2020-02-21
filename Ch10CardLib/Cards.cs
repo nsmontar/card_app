@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
-namespace Ch11CardLib
+namespace Ch10CardLib
 {
-    class Cards : CollectionBase
+    class Cards : CollectionBase, ICloneable
     {
         public void Add(Card newCard)
             => List.Add(newCard);
@@ -35,6 +35,13 @@ namespace Ch11CardLib
         /// </summary>
         public bool Contains(Card myCard)
             => InnerList.Contains(myCard);
+        public object Clone()
+        {
+            Cards copiedCards = new Cards();
+            foreach (Card sourceCard in List)
+                copiedCards.Add((Card)sourceCard.Clone());
+            return copiedCards;
+        }
 
     }
 }

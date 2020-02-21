@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ch11CardLib
+namespace Ch10CardLib
 {
-    public class Deck
+    public class Deck: ICloneable
     {
         private Cards cards = new Cards();
         public Deck()
@@ -18,6 +18,10 @@ namespace Ch11CardLib
                     cards.Add(new Card((Rank)rankVal, (Suit)suitVal));
                 }
             }
+        }
+        private Deck(Cards newCards)
+        {
+            cards = newCards;
         }
         public Card GetCard(int cardNum)
         {
@@ -51,6 +55,10 @@ namespace Ch11CardLib
                 newDeck.Add(cards[sourceCard]);
             }
             newDeck.CopyTo(cards);
+        }
+        public object Clone()
+        {
+            return new Deck(cards.Clone() as Cards);
         }
     }
 }
