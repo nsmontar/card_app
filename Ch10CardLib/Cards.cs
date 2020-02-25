@@ -42,6 +42,6 @@ namespace Ch10CardLib
                 copiedCards.Add((Card)sourceCard.Clone());
             return copiedCards;
         }
-
+        
     }
 }

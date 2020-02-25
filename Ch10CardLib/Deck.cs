@@ -15,13 +15,38 @@ namespace Ch10CardLib
             {
                 for (int rankVal = 1; rankVal < 14; rankVal++)
                 {
-                    cards.Add(new Card((Rank)rankVal, (Suit)suitVal));
+                    cards.Add(new Card((Suit)suitVal, (Rank)rankVal));
                 }
             }
         }
         private Deck(Cards newCards)
         {
             cards = newCards;
+        }
+        /// <summary>
+        /// Nondefault constructor. Allows aces to be set high.
+        /// </summary>
+        public Deck(bool isAceHigh): this()
+        {
+            Card.isAceHigh = isAceHigh;
+        }
+        /// <summary>
+        ///  Nondefault constructor. Allows a trump suit to be used.
+        /// </summary>
+        public Deck(bool useTrumps, Suit trump): this()
+        {
+            Card.useTrumps = useTrumps;
+            Card.trump = trump;
+        }
+        /// <summary>
+        /// Nondefault constructor. Allows aces to be set high and a trump
+        /// suit to be used.
+        /// </summary>
+        public Deck(bool isAceHigh, bool useTrumps, Suit trump): this()
+        {
+            Card.isAceHigh = isAceHigh;
+            Card.useTrumps = useTrumps;
+            Card.trump = trump;
         }
         public Card GetCard(int cardNum)
         {
