@@ -56,8 +56,7 @@ namespace Ch10CardLib
             }
             else
             {
-                throw new ArgumentOutOfRangeException("cardNum", cardNum,
-                    "Value must be between 0 and 51.");
+                throw new CardOutOfRangeException(cards.Clone() as Cards);
             }
             
         }

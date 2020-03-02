@@ -7,7 +7,7 @@ using System.Collections;
 
 namespace Ch10CardLib
 {
-    class Cards : List<Card>, ICloneable
+    public class Cards : List<Card>, ICloneable
     {
         ///<summary>
         /// Untility method for copying card instances into another Cards
@@ -24,7 +24,7 @@ namespace Ch10CardLib
         {
             Cards copiedCards = new Cards();
             foreach (Card sourceCard in this)
-                copiedCards.Add((Card)sourceCard.Clone());
+                copiedCards.Add(sourceCard.Clone() as Card);
             return copiedCards;
         }
         
